@@ -9,6 +9,7 @@ kubeflowをローカルに構築しパイプライン実装を試す。
 ## kubeflow pipelineのインストール
 
 ここではpoetryとpython 3.10 を使って構築する。
+kfpは現在v2がはいる
 
 ```shell
 poetry init
