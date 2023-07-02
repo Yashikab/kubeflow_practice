@@ -35,6 +35,13 @@ bash echo \
 
 sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+# dockerをnon root userで実行できるようにする
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+# 動作確認
+docker run hello-world
 ```
 
 ### kubeflowのデプロイ
