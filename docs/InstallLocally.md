@@ -76,6 +76,16 @@ featureGates:
     kind create cluster
     ```
 
+#### k3sのインストール
+
+- chromeosではserverが立ち上がらない
+
+```shell
+curl -sfL https://get.k3s.io | sh -
+sudo apt install kmod
+sudo k3s server &
+```
+
 #### kubeflowのデプロイ
 
     ```shell
