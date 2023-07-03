@@ -46,13 +46,37 @@ docker run hello-world
 
 ### kubeflowのデプロイ
 
+#### chromeosの場合
+
+- croshでlxc containerにネスティングを許可する必要がある
+- ctl+alt+T でcroshを開く
+
+```shell
+crosh> vmc laungh termina
+(termina) chronos@localhost ~ $ lxc config set penguin security.nesting true
+(termina) chronos@localhost ~ $ lxc restart penguin
+```
+
+- cluster.yamlを作る
+
+```yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+featureGates:
+  KubeletInUserNamespace: true
+```
+
+- `kind create cluster --config ./cluster.yaml` を実行
+
+#### 普通の場合
+
 - clusterをkindを使って作成する
 
     ```shell
     kind create cluster
     ```
 
-- kubeflowのデプロイ
+#### kubeflowのデプロイ
 
     ```shell
     export PIPELINE_VERSION=2.0.0
