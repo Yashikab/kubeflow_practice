@@ -1,5 +1,5 @@
 from kfp import dsl
-
+from compile import compile_to_yaml
 
 @dsl.component
 def say_hello(name: str) -> str:
@@ -12,3 +12,7 @@ def say_hello(name: str) -> str:
 def hello_pipeline(recipient: str) -> str:
     hello_task = say_hello(name=recipient)
     return hello_task.output
+
+
+if __name__ == "__main__":
+    compile_to_yaml(hello_pipeline, "hell_pipeline.yaml")
